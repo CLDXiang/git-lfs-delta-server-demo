@@ -1,0 +1,14 @@
+{
+  "eslint.nodePath": "../node_modules",
+  "eslint.validate": [
+    "typescript",
+  ],
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.words": [
+    "fieldname",
+    "originalname"
+  ],
+}
