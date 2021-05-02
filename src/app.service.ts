@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { FileType } from './app.types'
-import { mkdirSync, writeFileSync, existsSync } from 'fs'
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'fs'
 import { join, dirname } from 'path'
 
 @Injectable()
@@ -15,5 +15,13 @@ export class AppService {
       mkdirSync(dirname(storagePath), { recursive: true })
     }
     writeFileSync(storagePath, file.buffer)
+  }
+
+  fetchFile(path: string) {
+    const targetPath = join(process.cwd(), 'storage', path)
+    if (!existsSync(dirname(targetPath))) {
+      throw new NotFoundException('No such file')
+    }
+    return readFileSync(targetPath)
   }
 }

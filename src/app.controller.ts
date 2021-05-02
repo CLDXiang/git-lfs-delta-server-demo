@@ -40,4 +40,9 @@ export class AppController {
     }
     this.appService.storeFile(file, body.path)
   }
+
+  @Post('download')
+  async DownloadFile(@Body() body: { path: string }) {
+    return this.appService.fetchFile(body.path)
+  }
 }
