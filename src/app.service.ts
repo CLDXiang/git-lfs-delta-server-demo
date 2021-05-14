@@ -24,4 +24,8 @@ export class AppService {
     }
     return readFileSync(targetPath)
   }
+
+  PathsNotExist(paths: string[]) {
+    return paths.filter((p) => !existsSync(join(process.cwd(), 'storage', p)))
+  }
 }

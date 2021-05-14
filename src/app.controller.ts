@@ -45,4 +45,9 @@ export class AppController {
   async DownloadFile(@Body() body: { path: string }) {
     return this.appService.fetchFile(body.path)
   }
+
+  @Post('not-exist')
+  async NotExist(@Body() body: { paths: string[] }) {
+    return this.appService.PathsNotExist(body.paths)
+  }
 }
