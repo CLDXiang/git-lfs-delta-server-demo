@@ -4,6 +4,7 @@ import {
   Controller,
   Get,
   Post,
+  Query,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common'
@@ -49,5 +50,10 @@ export class AppController {
   @Post('not-exist')
   async NotExist(@Body() body: { paths: string[] }) {
     return this.appService.PathsNotExist(body.paths)
+  }
+
+  @Get('search-oid')
+  async SearchOid(@Query() prefix: string) {
+    return this.appService.SearchOid(prefix)
   }
 }
